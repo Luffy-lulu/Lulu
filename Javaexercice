@@ -42,3 +42,52 @@ public class Main {
         System.out.println("Je m'appelle " + name + ", j'ai " + age + " ans et je suis " + job + ".");
     }
 }
+
+// exercie 4 
+
+public class Main {
+    public static void main(String[] args) {
+        // Déclaration et initialisation de la variable 'str'
+        String str = "Hello World !";
+
+        int i = 0;
+
+
+        while (i < str.length()) {
+            // Afficher le caractère actuel
+            System.out.print(str.charAt(i));
+
+            if (i < str.length() - 1) {
+                System.out.print(" "); // Ajouter un espace si ce n'est pas le dernier caractère
+            }
+
+            // Incrémenter 'i'
+            i++;
+        }
+
+        System.out.println();
+    }
+}
+
+//exercie 5 
+public class Main {
+    public static void main(String[] args) {
+       
+        String str = "abcdefghijklmnopqrstuvwxyz";
+
+        // Déclaration et initialisation de la variable 'i'
+        int i = 0;
+
+       
+        while (i < str.length()) {
+            // Afficher le caractère actuel
+            System.out.print(str.charAt(i));
+
+            
+            i += 2;
+        }
+
+        /
+        System.out.println();
+    }
+}
