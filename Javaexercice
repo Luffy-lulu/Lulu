@@ -1,0 +1,44 @@
+// exercice 1 
+public class Main {
+    public static void main(String[] args) {
+       
+        String name = "Alex";
+
+     
+        Integer age = 25;
+
+       
+        System.out.println("Nom : " + name);
+        System.out.println("Âge : " + age);
+    }
+}
+
+// exercice 2 
+public class Main {
+    public static void main(String[] args) {
+       
+        double price = 19.99;
+
+     
+        int quantity = 12;
+
+   
+        double total = price * quantity;
+
+       
+        System.out.println("Total : " + total);
+    }
+}
+
+//exercice 3 
+public class Main {
+    public static void main(String[] args) {
+        
+        String name = "Halil";
+        int age = 27;
+        String job = "développeur";
+
+        
+        System.out.println("Je m'appelle " + name + ", j'ai " + age + " ans et je suis " + job + ".");
+    }
+}
