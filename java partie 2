@@ -1,0 +1,110 @@
+// exo 1 
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        // Création de l'ArrayList 'stock' et ajout de nombres
+        ArrayList<Integer> stock = new ArrayList<>();
+        stock.add(14);
+        stock.add(887);
+        stock.add(58);
+        stock.add(713);
+        stock.add(179);
+        stock.add(512);
+        stock.add(786);
+        stock.add(29);
+
+        // Appel de la méthode 'sum' pour calculer la somme des éléments de 'stock'
+        Integer total = sum(stock);
+
+        // Affichage du résultat
+        System.out.println("Contenu du stock : " + total);
+    }
+
+    // Méthode privée et statique pour calculer la somme des éléments de la liste
+    private static Integer sum(ArrayList<Integer> list) {
+        Integer total = 0;
+        for (Integer num : list) {
+            total += num;
+        }
+        return total;
+    }
+}
+
+
+//exo 2 
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        // Vérification de la présence d'un argument
+        if (args.length != 1) {
+            System.err.println("Veuillez fournir un fruit en argument.");
+            System.exit(1); // Terminer le processus avec une valeur de retour non nulle en cas d'erreur
+        }
+
+        // Création de la liste de fruits
+        ArrayList<String> tab = new ArrayList<>();
+        tab.add("kiwi");
+        tab.add("pomme");
+        tab.add("poire");
+        tab.add("litchi");
+        tab.add("rhubarbe");
+
+        // Appel de la méthode findFruit pour trouver l'index du fruit
+        int findIndex = findFruit(tab, args[0]);
+
+        // Affichage en fonction du résultat de la recherche
+        if (findIndex != -1) {
+            System.out.println("Le fruit " + args[0] + " se trouve à l'index " + findIndex + " dans la liste.");
+        } else {
+            System.out.println("Le fruit " + args[0] + " n'a pas été trouvé dans la liste.");
+        }
+    }
+
+    // Méthode privée et statique pour trouver l'index du fruit dans la liste
+    private static int findFruit(ArrayList<String> list, String str) {
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).equals(str)) {
+                return i;
+            }
+        }
+        return -1; // Le fruit n'a pas été trouvé
+    }
+}
+
+
+//exo 3
+
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        // Création de la liste de phrases
+        ArrayList<String> quotations = new ArrayList<>();
+        quotations.add("Quand Paris s’enrhume, l’Europe a froid");
+        quotations.add("S'il y a un diamant dans la poitrine, il brille sur le visage");
+        quotations.add("La joie de vivre n'est pas un but, mais un devoir");
+
+        // Appel de la méthode countVowels pour chaque phrase et affichage du résultat
+        for (String quotation : quotations) {
+            int vowelCount = countVowels(quotation);
+            System.out.println("Phrase : " + quotation);
+            System.out.println("Nombre de voyelles : " + vowelCount);
+            System.out.println(); // Ligne vide pour séparer les résultats
+        }
+    }
+
+    // Méthode pour compter les voyelles dans une phrase
+    private static int countVowels(String str) {
+        int count = 0;
+        str = str.toLowerCase(); // Convertir la phrase en minuscules pour la comparaison
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'y') {
+                count++;
+            }
+        }
+        return count;
+    }
+}
