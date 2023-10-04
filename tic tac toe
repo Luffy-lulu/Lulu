@@ -6,7 +6,6 @@ public class Morpion {
         char[][] grille = initGrille();
         char joueurHumain, joueurOrdinateur;
 
-    
         Random random = new Random();
         if (random.nextBoolean()) {
             joueurHumain = 'X';
@@ -25,10 +24,8 @@ public class Morpion {
 
         while (!partieTerminee) {
             if (joueurHumain == 'X') {
-                // Tour du joueur humain
                 jouerTour(grille, joueurHumain, scanner);
             } else {
-                // Tour de l'ordinateur (choix aléatoire)
                 jouerTourOrdinateur(grille, joueurOrdinateur);
             }
 
@@ -45,7 +42,6 @@ public class Morpion {
                 partieTerminee = true;
             }
 
-            
             char temp = joueurHumain;
             joueurHumain = joueurOrdinateur;
             joueurOrdinateur = temp;
@@ -53,7 +49,6 @@ public class Morpion {
 
         scanner.close();
     }
-
 
     private static char[][] initGrille() {
         char[][] grille = new char[3][3];
@@ -65,29 +60,72 @@ public class Morpion {
         return grille;
     }
 
-
     private static void afficherGrille(char[][] grille) {
-        // Code pour afficher la grille
+        System.out.println("-------------");
+        for (int i = 0; i < 3; i++) {
+            System.out.print("| ");
+            for (int j = 0; j < 3; j++) {
+                System.out.print(grille[i][j] + " | ");
+            }
+            System.out.println();
+            System.out.println("-------------");
+        }
     }
 
-
     private static void jouerTour(char[][] grille, char joueur, Scanner scanner) {
-        // Code pour gérer le tour du joueur humain
+        System.out.print("Entrez la ligne (0, 1, ou 2) : ");
+        int ligne = scanner.nextInt();
+        System.out.print("Entrez la colonne (0, 1, ou 2) : ");
+        int colonne = scanner.nextInt();
+
+        if (ligne >= 0 && ligne < 3 && colonne >= 0 && colonne < 3 && grille[ligne][colonne] == ' ') {
+            grille[ligne][colonne] = joueur;
+        } else {
+            System.out.println("Mouvement invalide. Réessayez.");
+            jouerTour(grille, joueur, scanner);
+        }
     }
 
     private static void jouerTourOrdinateur(char[][] grille, char joueur) {
-        // Code pour gérer le tour de l'ordinateur
-    }
+        Random random = new Random();
+        int ligne, colonne;
 
+        do {
+            ligne = random.nextInt(3);
+            colonne = random.nextInt(3);
+        } while (grille[ligne][colonne] != ' ');
+
+        grille[ligne][colonne] = joueur;
+    }
 
     private static boolean victoire(char[][] grille, char joueur) {
-        // Code pour vérifier la victoire
-        return false;
+        
+        for (int i = 0; i < 3; i++) {
+            if (grille[i][0] == joueur && grille[i][1] == joueur && grille[i][2] == joueur) {
+                return true; 
+            }
+            if (grille[0][i] == joueur && grille[1][i] == joueur && grille[2][i] == joueur) {
+                return true; 
+            }
+        }
+        if (grille[0][0] == joueur && grille[1][1] == joueur && grille[2][2] == joueur) {
+            return true; 
+        }
+        if (grille[0][2] == joueur && grille[1][1] == joueur && grille[2][0] == joueur) {
+            return true; 
+        }
+
+        return false; // Aucune victoire
     }
 
-
     private static boolean matchNul(char[][] grille) {
-        // Code pour vérifier le match nul
-        return false;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (grille[i][j] == ' ') {
+                    return false; // Il reste au moins une case vide
+                }
+            }
+        }
+        return true; // Aucune case vide, match nul
     }
 }
